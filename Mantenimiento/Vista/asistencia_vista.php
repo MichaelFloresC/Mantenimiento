@@ -31,9 +31,34 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <form>
+                            <form method="post" action="../Controlador/asistencia_controlador.php">
 
-
+                            <select class="form-control" name="claseid">
+                            <?php
+                                $clasesgrupos = $objGrupo->get_clases_grupo($_GET['grupoid_input']);
+                                for($m = 0; $m < sizeof($clasesgrupos); $m++){
+                                    echo '<option value="'.$clasesgrupos[$m][clase_fecha_id].'">'.$clasesgrupos[$m][curso_nombre].' - '.$clasesgrupos[$m][tipo].' - ';
+                                    switch ($clasesgrupos[$m][dia]) {
+    case 1:
+        echo "lunes";
+        break;
+    case 2:
+        echo "martes";
+        break;
+    case 3:
+        echo "miercoles";
+        break;
+    case 4:
+        echo "jueves";
+        break;
+    case 5:
+        echo "viernes";
+        break;
+}                                   echo ' - '.$clasesgrupos[$m][fecha].'</option>';
+                                }
+                            ?>
+                            </select>
+                            <input type="hidden" name="grupoidi" value=<?php echo '"'.$_GET['grupoid_input'].'"'?>>
                             <div class="dataTable_wrapper">
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -53,7 +78,7 @@
                                                         <input type="hidden" value="'.$alumnos[$i][estudiante_id] .'"> 
                                                         <td>'.$alumnos[$i][estudiante_nombre].'</td>
                                                         <td>'.$alumnos[$i][CUI].'</td>
-                                                        <td class="center"><center><input type="checkbox" name="check" value="check">   Asistio </center><br></td>
+                                                        <td class="center"><center><input type="checkbox" name="check_asis[]" value="'.$alumnos[$i][estudiante_id].'" checked="checked">   Asistio </center><br></td>
                                                     </tr>
                                                 ';
                                             }
@@ -61,7 +86,7 @@
                                                        
                                     </tbody>
                                 </table>
-                               <center><button type="button" class="btn btn-outline btn-warning">Guardar Asistencias</button></a></center>
+                               <center><button type="submit" name="submit" class="btn btn-outline btn-warning">Guardar Asistencias</button></a></center>
                             </div>
                             <!-- /.table-responsive -->
                             </form> 
