@@ -1,21 +1,15 @@
 <?php include("restriccion.php"); ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <?php include("head.php"); ?>
 
 <body>
 
     <div id="wrapper">
 
-        <!-- Navigation -->
-        <?php
-        include("desplegable.php")
-        ?>
-
-        <div id="page-wrapper">
+    <?php include("panel.php");?>
+       <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <br>
@@ -47,60 +41,69 @@
 
                             <?php
                                 require '../Modelo/grupos_modelo.php';
+                                require '../Modelo/docente_modelo.php';
+                                require '../Modelo/aulas_modelo.php';
                                 $objGrupo = new grupos_modelo(); 
+                                $objDocente = new docente_modelo();
+                                $objAulas = new aulas_modelo();
+
                                 for($j = 0; $j < sizeof($periodos); $j++){
                                     echo'
                                 <div class="tab-pane fade" id="'.$periodos[$j][periodo_id].'">                                   
                                         <div class="dataTable_wrapper">
                                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                                 <thead>
-                                                                    <tr>
-                                                                        <th>Curso</th>
-                                                                        <th>Grupo</th>
-                                                                        <th>Tipo</th>
-                                                                        <th>Aula</th>
-                                                                        <th>Profesor</th>
-                                                                        <th>Días</th>
-                                                                        <th>H. Inicio</th>
-                                                                        <th>H. Fin</th>
-                                                                        <th>Registrar</th>
-                                                                    </tr>
+                                                    <tr>
+                                                        <th style="display:none;">Id Curso</th>
+                                                        <th>Curso</th>
+                                                        <th>Id Grupo</th>
+                                                        <th>Tipo</th>
+                                                        <th>Aula</th>
+                                                        <th>Docente</th>
+                                                        <th>Días</th>
+                                                        <th>H. Inicio</th>
+                                                        <th>H. Fin</th>
+                                                        <th>Registrar</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
                                     '; 
                                                                    
-                                    
-                                    //error_reporting(0);
                                     $grupos = $objGrupo->get_grupos($periodos[$j][periodo_id]);
                                     for($k = 0; $k < sizeof($grupos); $k++){
                                         echo'
-                                                    <tr class="odd gradeX">
-                                                        <td>'.$grupos[$k][curso_id].'</td>
-                                                        <td>'.$grupos[$k][grupo_id].'</td>
-                                                        <td>'.$grupos[$k][tipo_grupo_id].'</td>
-                                                        <td>'.$grupos[$k][aula_id].'</td>
-                                                        <td>'.$grupos[$k][docente_id].'</td>
-                                                        <td><input type="checkbox" name="lunes" value=" "> Lunes<br>
-                                                            <input type="checkbox" name="martes" value=" "> Martes<br>
-                                                            <input type="checkbox" name="miercoles" value=" ">Miércoles<br>
-                                                            <input type="checkbox" name="jueves" value=" "> Jueves<br>
-                                                            <input type="checkbox" name="viernes" value=" ">Viernes<br>
-                                                        </td>
-                                                        <td><input type="time" id="myTime">
-                                                            <input type="time" id="myTime">
-                                                            <input type="time" id="myTime">
-                                                            <input type="time" id="myTime">
-                                                            <input type="time" id="myTime">
-                                                        </td>
-                                                        <td><input type="time" id="myTime">
-                                                            <input type="time" id="myTime">
-                                                            <input type="time" id="myTime">
-                                                            <input type="time" id="myTime">
-                                                            <input type="time" id="myTime">
-                                                        </td>
-                                                        <td><button type="submit" class="btn btn-default ">Registrar</button></td>
-                                                    </tr>
+                                                <tr class="odd gradeX">
+                                                <form method="post" id="rowgrupo_form2" action="../controlador/registroHorario_controlador.php">
+                                                    <td style="display:none;"><input type="number" name="cursoid_input" value="'.$grupos[$k][curso_id].'"></td>
+                                                    <td>'.$grupos[$k][curso_nombre].'</td>
+                                                    <td>'.$grupos[$k][grupo_id].'</td>
+                                                    <td>'.$grupos[$k][tipo].'</td>
+                                                    <td>'.$grupos[$k][aula_etiqueta].'</td>
+                                                    <td>'.$grupos[$k][docente_nombre].'</td>
+                                                    <td><label> Lunes </label><br>
+                                                        <label> Martes </label><br>
+                                                        <label> Miércoles </label><br>
+                                                        <label> Jueves </label><br>
+                                                        <label> Viernes </label><br>
+                                                    </td>
+                                                    <td><input type="time" id="inicioLunes">
+                                                        <input type="time" id="inicioMartes">
+                                                        <input type="time" id="inicioMiercoles">
+                                                        <input type="time" id="inicioJueves">
+                                                        <input type="time" id="inicioViernes">
+                                                    </td>
+                                                    <td>
+                                                        <input type="time" id="finLunes">
+                                                        <input type="time" id="finMartes">
+                                                        <input type="time" id="finMiercoles">
+                                                        <input type="time" id="finJueves">
+                                                        <input type="time" id="finViernes">
+                                                    </td>
+                                                    <td><button type="submit" class="btn btn-default ">Registrar</button></td>
+                                                </form>
+                                                </tr>
                                         ';
+                                        
                                     }
                                     echo'
                                                 </tbody>

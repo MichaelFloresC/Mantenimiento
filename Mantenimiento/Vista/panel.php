@@ -126,6 +126,9 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Asistencia<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
                                 <li>
+                                    <a href="misCursos_vista.php">Mis Cursos del Día</a>
+                                </li>
+                                <li>
                                     <a href="asistencia_vista.php">Lista</a>
                                 </li>
                             </ul>
