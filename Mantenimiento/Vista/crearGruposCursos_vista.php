@@ -39,7 +39,8 @@
                                     </select>
                                     <br>
                                     <label>Seleccionar Periodo</label>
-                                    <select class="form-control" name="periodoid">
+          
+                                    <select class="form-control" name="periodoid_input" form="rowgrupo_form">
                                     <?php
                                         require '../Modelo/periodos_modelo.php';
                                         $objPeriodo = new periodos_modelo();
@@ -74,6 +75,7 @@
                                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                                 <thead>
                                                                     <tr>
+                                                                        <th style="display:none;">Id</th>
                                                                         <th>Código</th>
                                                                         <th>Nombre</th>
                                                                         <th>Teoría</th>
@@ -91,12 +93,16 @@
                                     for($k = 0; $k < sizeof($cursos); $k++){
                                         echo'
                                                     <tr class="odd gradeX">
-                                                        <td>'.$cursos[$k][curso_id].'</td>
+                                                    <form method="post" id="rowgrupo_form" action="../controlador/crearGrupos_controlador.php">
+                                                        <td style="display:none;"><input type="number" name="cursoid_input" value="'.$cursos[$k][curso_id].'"></td>
+                                                        <td>'.$cursos[$k][codigo].'</td>
                                                         <td>'.$cursos[$k][curso_nombre].'</td>
-                                                        <td><input class="form-control" placeholder="Cantidad grupos Teoría" type="number" min="0" step="1"></td>
-                                                        <td><input class="form-control" placeholder="Cantidad grupos Laboratorio" type="number" min="0" step="1"></td>
-                                                        <td><input class="form-control" placeholder="Cantidad grupos Prácticas" type="number" min="0" step="1"></td>
-                                                        <td><button type="submit" class="btn btn-default ">Registrar</button></td>
+
+                                                        <td><input class="form-control" placeholder="Cantidad grupos Teoría" type="number" min="0" step="1" name="teo_input"></td>
+                                                        <td><input class="form-control" placeholder="Cantidad grupos Laboratorio" type="number" min="0" step="1" name="lab_input"></td>
+                                                        <td><input class="form-control" placeholder="Cantidad grupos Prácticas" type="number" min="0" step="1" name="pra_input"></td>
+                                                        <td><button type="submit" name="submit" class="btn btn-default ">Registrar</button></td>
+                                                    </form>
                                                     </tr>
                                         ';
                                     }
