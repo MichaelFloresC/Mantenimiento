@@ -39,60 +39,73 @@
                             <div class="tab-content">
 
                             <?php
-                                require '../Modelo/tipos_grupos_modelo.php';
-                                $objTipos_grupos = new tipos_grupos_modelo();
                                 require '../Modelo/grupos_modelo.php';
+                                require '../Modelo/docente_modelo.php';
+                                require '../Modelo/aulas_modelo.php';
                                 $objGrupo = new grupos_modelo(); 
+                                $objDocente = new docente_modelo();
+                                $objAulas = new aulas_modelo();
+
                                 for($j = 0; $j < sizeof($periodos); $j++){
                                     echo'
                                 <div class="tab-pane fade" id="'.$periodos[$j][periodo_id].'">                                   
-                                        <div class="dataTable_wrapper">
-                                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                                <thead>
-                                                                    <tr>
-                                                                        <th>Código</th>
-                                                                        <th>Curso</th>
-                                                                        <th>Tipo</th>
-                                                                        <th>Aula</th>
-                                                                        <th>Docente</th>
-                                                                        <th>ListaAlumnos</th>
-                                                                        <th>Registrar</th>
-                                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                    '; 
-                                                                   
-                                    
-                                    //error_reporting(0);
-                                    $tipos_grupos = $objTipos_grupos->get_tipos_grupos();
+                                    <div class="dataTable_wrapper">
+                                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th style="display:none;">Id</th>
+                                                    <th>Código</th>
+                                                    <th>Curso</th>
+                                                    <th>Tipo</th>
+                                                    <th>Aula</th>
+                                                    <th>Docente</th>
+                                                    <th>ListaAlumnos</th>
+                                                    <th>Registrar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                    ';                                
                                     $grupos = $objGrupo->get_grupos($periodos[$j][periodo_id]);
                                     for($k = 0; $k < sizeof($grupos); $k++){
                                         echo'
-                                                    <tr class="odd gradeX">
-                                                        <td>'.$grupos[$k][grupo_id].'</td>
-                                                        <td>'.$grupos[$k][curso_id].'</td>
-                                                        <td>
-                                        ';              
-                                                        for($l = 0; $l < sizeof($tipos_grupos); $l++){
-                                                        echo' <option value="'.$tipos_grupos[$l][tipo_grupo_id].'">'.$tipos_grupos[$l][tipo_grupo_tipo].'</option>
-                                                        ';
-
-                                                        }
+                                                <tr class="odd gradeX">
+                                                <form method="post" id="rowgrupo_form2" action="../controlador/asignarGrupos_controlador.php">
+                                                    <td style="display:none;"><input type="number" name="grupoid_input" value="'.$grupos[$k][grupo_id].'"></td>
+                                                    <td>'.$grupos[$k][codigo].'</td>
+                                                    <td>'.$grupos[$k][curso_nombre].'</td>
+                                                    <td>'.$grupos[$k][tipo].'</td>
+                                                    <td><select class="form-control" name="aula_input">
+                                        ';
+                                        $aulas = $objAulas->get_aulas();
+                                        for($l = 0; $l < sizeof($aulas); $l++){
+                                            echo' 
+                                                            <option value="'.$aulas[$l][aula_id].'">'.$aulas[$l][aula_etiqueta].'</option>
+                                            ';
+                                        }
                                         echo '
-                                                        </td>
-                                                        <td><input class="form-control" placeholder="Número de aula" type="number" min="0" step="1"></td>
-                                                        <td><input class="form-control" placeholder="Docente asignado" type="text"></td>
-                                                        <td><input class="form-control" placeholder="Alumnos asignados" type="text"></td>
-                                                        <td><button type="submit" class="btn btn-default ">Registrar</button></td>
-                                                    </tr>
+                                                    </select></td>
+                                                    <td><select class="form-control" name="docente_input">
+                                        ';
+                                        $docentes = $objDocente->get_docentes();
+                                        for($l = 0; $l < sizeof($docentes); $l++){
+                                            echo' 
+                                                            <option value="'.$docentes[$l][docente_id].'">'.$docentes[$l][docente_nombre].'</option>
+                                            ';
+                                        }
+                                        echo '
+                                                    </select></td>
+                                                    <td><input type="file" class="form-control-file" name="alumnos_input" id="alumnos_input" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" runat="server"></td>
+                                                    <td><button type="submit" class="btn btn-default ">Registrar</button></td>
+                                                    </form>
+                                                </tr>
                                         ';
                                         
                                     }
                                     echo'
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- /.table-responsive -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
                                 </div>
                             
                                     ';
