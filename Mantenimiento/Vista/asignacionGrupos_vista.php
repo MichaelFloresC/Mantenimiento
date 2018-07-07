@@ -65,7 +65,7 @@
                                             </thead>
                                             <tbody>
                                     ';                                
-                                    $grupos = $objGrupo->get_grupos($periodos[$j][periodo_id]);
+                                    $grupos = $objGrupo->get_grupos_basico($periodos[$j][periodo_id]);
                                     for($k = 0; $k < sizeof($grupos); $k++){
                                         echo'
                                                 <tr class="odd gradeX">
