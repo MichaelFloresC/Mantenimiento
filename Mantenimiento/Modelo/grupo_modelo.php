@@ -127,39 +127,4 @@ class grupo_modelo{
 		else
 			$result = $this->db->query("UPDATE clase set activo = 0 where grupo_id = ".$grupoid." and dia = 5");
 	}
-
-
-
 }
-		//}
-
-		//Miercoles
-		//if($iniMiercoles == -1 || $finMiercoles == -1){
-			$result = $this->db->query("DELETE FROM clase WHERE dia = 3 and grupo_id = ".$grupoid);
-		//}else{
-			if($iniMiercoles != -1 && $finMiercoles != -1)
-			$result = $this->db->query("INSERT INTO clase (grupo_id, dia, hora_ingreso, hora_salida) VALUES (".$grupoid.", 3, '".$iniMiercoles."','".$finJueves."')");
-		//}
-
-		//Jueves
-		//if($iniJueves == -1 || $finJueves == -1){
-			$result = $this->db->query("DELETE FROM clase WHERE dia = 4 and grupo_id = ".$grupoid);
-		//}else{
-			if($iniJueves != -1 && $finJueves != -1)
-			$result = $this->db->query("INSERT INTO clase (grupo_id, dia, hora_ingreso, hora_salida) VALUES (".$grupoid.", 4, '".$iniJueves."','".$finJueves."')");
-		//}
-
-		//Viernes
-		//if($iniViernes == -1 || $finViernes == -1){
-			$result = $this->db->query("DELETE FROM clase WHERE dia = 5 and grupo_id = ".$grupoid);
-		//}else{
-			if($iniViernes != -1 && $finViernes != -1)
-			$result = $this->db->query("INSERT INTO clase (grupo_id, dia, hora_ingreso, hora_salida) VALUES (".$grupoid.", 5, '".$iniViernes."','".$finViernes."')");
-		//}
-	}
-
-
-
-}
->>>>>>> 1160af6cf3790be2d4a717c7951b8d4cdca6a3cd
-?>
