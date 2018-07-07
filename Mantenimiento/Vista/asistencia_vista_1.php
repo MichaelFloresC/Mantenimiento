@@ -1,64 +1,15 @@
-<?php
-session_start();
-
-echo "<h2 style='text-aligin:center;'>Bienvenido! " . $_SESSION['nombre_acceso']."</h2>";
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-
-} else {
-    echo "Esta pagina es solo para usuarios registrados.<br>";
-    echo "<br><a href='../index.php'>Login</a>";
-    exit;
-}
-
-$now = time();
-
-if($now > $_SESSION['expire']) {
-session_destroy();
-
-echo "Su sesion a terminado,
-<a href='../index.php'>Necesita Hacer Login</a>";
-exit;
-}
-?>
+<?php include("restriccion.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Sistema de Asistencia</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../plugins/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../plugins/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
-    <link href="../plugins/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
-    <link href="../plugins/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../plugins/dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../plugins/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-</head>
+<?php include("head.php"); ?>
 
 <body>
     <div id="wrapper">
         <!-- Navigation -->
         <?php
-        include("desplegable.php")
+        include("panel.php")
         ?>
 
         <div id="page-wrapper">

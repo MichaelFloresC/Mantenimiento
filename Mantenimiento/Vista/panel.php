@@ -74,6 +74,9 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Horarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
+                                    <a href="registroHorario_vista.php">Registrar Horarios</a>
+                                </li>
+                                <li>
                                     <a href="#">Reprogramación</a>
                                 </li>
                                 
