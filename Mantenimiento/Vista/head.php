@@ -32,5 +32,6 @@
 
     <!-- Custom Fonts -->
     <link href="../plugins/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="../plugins/js/angular.min.js"></script>
 	
 </head>

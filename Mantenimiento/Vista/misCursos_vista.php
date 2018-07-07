@@ -1,21 +1,15 @@
 <?php include("restriccion.php"); ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <?php include("head.php"); ?>
 
 <body>
 
     <div id="wrapper">
 
-        <!-- Navigation -->
-        <?php
-        include("panel.php")
-        ?>
-
-        <div id="page-wrapper">
+    <?php include("panel.php");?>
+       <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <br>
@@ -27,73 +21,64 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Asignar grupos por periodo
+                            Grupos de cursos-teoria, cursos-práctica y cursos-laboratorio del docente
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <ul class="nav nav-pills">
-                            <?php
-                                error_reporting(0);
-                                require '../Modelo/periodos_modelo.php';
-                                $objPeriodo = new periodos_modelo();
-                                $periodos = $objPeriodo->get_periodos();
-                                for($j = 0; $j < sizeof($periodos); $j++)
-                                    echo '<li><a href="#'.$periodos[$j][periodo_id].'" data-toggle="tab">'.$periodos[$j][periodo_descripcion].'</a></li>';
-                            ?>
-                            </ul>
                             <br>
-                            <!-- Tab panes -->
-                            <div class="tab-content">
+                            
 
                             <?php
+                                error_reporting(0);
                                 require '../Modelo/grupos_modelo.php';
+                                require '../Modelo/docente_modelo.php';
+                                require '../Modelo/aulas_modelo.php';
+                                require '../Modelo/periodos_modelo.php';
                                 $objGrupo = new grupos_modelo(); 
-                                for($j = 0; $j < sizeof($periodos); $j++){
+                                $objDocente = new docente_modelo();
+                                $objAulas = new aulas_modelo();
+                                $objPeriodo = new periodos_modelo();
+                                $periodos = $objPeriodo->get_periodos();
                                     echo'
-                                <div class="tab-pane fade" id="'.$periodos[$j][periodo_id].'">                                   
+                                                                  
                                         <div class="dataTable_wrapper">
                                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                                 <thead>
-                                                                    <tr>
-                                                                        <th>Código</th>
-                                                                        <th>Curso</th>
-                                                                        <th>Tipo</th>
-                                                                        <th>Aula</th>
-                                                                        <th>Docente</th>
-                                                                        <th>ListaAlumnos</th>
-                                                                        <th>Registrar</th>
-                                                                    </tr>
+                                                    <tr>
+                                                        <th style="display:none;">Id Curso</th>
+                                                        <th>Curso</th>
+                                                        <th>Id Grupo</th>
+                                                        <th>Tipo</th>
+                                                        <th>Registrar Asistencia</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody>
                                     '; 
                                                                    
-                                    
-                                    //error_reporting(0);
-                                    $grupos = $objGrupo->get_grupos($periodos[$j][periodo_id]);
+                                    $grupos = $objGrupo->get_grupos2();
                                     for($k = 0; $k < sizeof($grupos); $k++){
                                         echo'
-                                                    <tr class="odd gradeX">
-                                                        <td>'.$grupos[$k][grupo_id].'</td>
-                                                        <td>'.$grupos[$k][curso_id].'</td>
-                                                        <td><input class="form-control" placeholder="Tipo de grupo" type="text"></td>
-                                                        <td><input class="form-control" placeholder="Número de aula" type="number" min="0" step="1"></td>
-                                                        <td><input class="form-control" placeholder="Docente asignado" type="text"></td>
-                                                        <td><input class="form-control" placeholder="Alumnos asignados" type="text"></td>
-                                                        <td><button type="submit" class="btn btn-default ">Registrar</button></td>
-                                                    </tr>
+                                                <tr class="odd gradeX">
+                                                <form method="get" id="rowgrupo_form2" action="./asistencia_vista.php">
+                                                    <td style="display:none;"><input type="number" name="grupoid_input" value="'.$grupos[$k][grupo_id].'"></td>
+                                                    <td>'.$grupos[$k][curso_nombre].'</td>
+                                                    <td>'.$grupos[$k][grupo_id].'</td>
+                                                    <td>'.$grupos[$k][tipo].'</td>
+                                                    <td><button type="submit" class="btn btn-default ">Tomar Asistencia</button></td>
+                                                </form>
+                                                </tr>
                                         ';
+                                        
                                     }
                                     echo'
                                                 </tbody>
                                             </table>
                                         </div>
                                         <!-- /.table-responsive -->
-                                </div>
+                                
                             
                                     ';
-                                }
                             ?>  
-                            </div>
                         </div>
                         <!-- /.panel-body -->
                     </div>

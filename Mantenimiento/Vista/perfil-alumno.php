@@ -87,7 +87,6 @@ else{
 							<br>
 							
                             <div class="panel-heading">
-                                <h3 class="panel-title"><?php echo $pvd->persona_nombres; ?> <?php echo $pvd->persona_apellido1; ?> <button type="button" class="btn btn-primary btn-xs">Generar Reporte</button></h3>
 								
                             </div>
 							<div class="alert alert-success">
@@ -99,19 +98,19 @@ else{
                                         <table class="table table-user-information">
                                             <tbody>
                                                 <tr><td>CUI:</td>
-                                                    <td><?php echo $pvd->persona_cui; ?></td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Dirección</td>
-                                                    <td><?php echo $pvd->persona_direccion; ?></td>
+                                                    <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Correo</td>
-                                                    <td><a href="mailto:info@support.com"><?php echo $pvd->persona_email; ?></a></td>
+                                                    <td><a href="mailto:info@support.com"></a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Telefono</td>
-                                                    <td><?php echo $pvd->persona_telefono; ?></td>
+                                                    <td></td>
                                                 </tr>
                                             </tbody>
                                         </table>

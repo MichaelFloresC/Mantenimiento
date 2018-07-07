@@ -5,10 +5,11 @@
 <?php include("head.php"); ?>
 
 <body>
+
     <div id="wrapper">
 
-    <?php include("panel.php"); ?>  
-        <div id="page-wrapper">
+    <?php include("panel.php");?>
+       <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <br>
@@ -20,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Asignar grupos por periodo
+                            Registro de Horarios por Periodo
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -49,65 +50,66 @@
                                 for($j = 0; $j < sizeof($periodos); $j++){
                                     echo'
                                 <div class="tab-pane fade" id="'.$periodos[$j][periodo_id].'">                                   
-                                    <div class="dataTable_wrapper">
-                                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                            <thead>
-                                                <tr>
-                                                    <th style="display:none;">Id</th>
-                                                    <th>Código</th>
-                                                    <th>Curso</th>
-                                                    <th>Tipo</th>
-                                                    <th>Aula</th>
-                                                    <th>Docente</th>
-                                                    <th>ListaAlumnos</th>
-                                                    <th>Registrar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                    ';                                
-                                    $grupos = $objGrupo->get_grupos_basico($periodos[$j][periodo_id]);
+                                        <div class="dataTable_wrapper">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="display:none;">Id Curso</th>
+                                                        <th>Curso</th>
+                                                        <th>Id Grupo</th>
+                                                        <th>Tipo</th>
+                                                        <th>Aula</th>
+                                                        <th>Docente</th>
+                                                        <th>Días</th>
+                                                        <th>H. Inicio</th>
+                                                        <th>H. Fin</th>
+                                                        <th>Registrar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                    '; 
+                                                                   
+                                    $grupos = $objGrupo->get_grupos($periodos[$j][periodo_id]);
                                     for($k = 0; $k < sizeof($grupos); $k++){
                                         echo'
                                                 <tr class="odd gradeX">
-                                                <form method="post" id="rowgrupo_form2" action="../controlador/asignarGrupos_controlador.php" enctype="multipart/form-data">
-                                                    <td style="display:none;"><input type="number" name="grupoid_input" value="'.$grupos[$k][grupo_id].'"></td>
-                                                    <td>'.$grupos[$k][codigo].'</td>
+                                                <form method="post" id="rowgrupo_form3" action="../controlador/registroHorario_controlador.php">
+                                                    <td style="display:none;"><input type="number" name="cursoid_input" value="'.$grupos[$k][grupo_id].'"></td>
                                                     <td>'.$grupos[$k][curso_nombre].'</td>
+                                                    <td>'.$grupos[$k][grupo_id].'</td>
                                                     <td>'.$grupos[$k][tipo].'</td>
-                                                    <td><select class="form-control" name="aula_input">
-                                                        <option value="-1" selected>...</option>
-                                        ';
-                                        $aulas = $objAulas->get_aulas();
-                                        for($l = 0; $l < sizeof($aulas); $l++){
-                                            echo' 
-                                                            <option value="'.$aulas[$l][aula_id].'">'.$aulas[$l][aula_etiqueta].'</option>
-                                            ';
-                                        }
-                                        echo '
-                                                    </select></td>
-                                                    <td><select class="form-control" name="docente_input">
-                                                        <option value="-1" selected>...</option>
-                                        ';
-                                        $docentes = $objDocente->get_docentes();
-                                        for($l = 0; $l < sizeof($docentes); $l++){
-                                            echo' 
-                                                            <option value="'.$docentes[$l][docente_id].'">'.$docentes[$l][docente_nombre].'</option>
-                                            ';
-                                        }
-                                        echo '
-                                                    </select></td>
-                                                    <td><input type="file" class="form-control-file" name="alumnos_input" id="alumnos_input" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" runat="server"></td>
+                                                    <td>'.$grupos[$k][aula_etiqueta].'</td>
+                                                    <td>'.$grupos[$k][docente_nombre].'</td>
+                                                    <td><label> Lunes </label><br>
+                                                        <label> Martes </label><br>
+                                                        <label> Miércoles </label><br>
+                                                        <label> Jueves </label><br>
+                                                        <label> Viernes </label><br>
+                                                    </td>
+                                                    <td><input type="time" name="inicioLunes" id="inicioLunes">
+                                                        <input type="time" name ="inicioMartes" id="inicioMartes">
+                                                        <input type="time" name="inicioMiercoles" id="inicioMiercoles">
+                                                        <input type="time" name="inicioJueves" id="inicioJueves">
+                                                        <input type="time" name="inicioViernes" id="inicioViernes">
+                                                    </td>
+                                                    <td>
+                                                        <input type="time" name="finLunes" id="finLunes">
+                                                        <input type="time" name="finMartes" id="finMartes">
+                                                        <input type="time" name="finMiercoles" id="finMiercoles">
+                                                        <input type="time" name="finJueves" id="finJueves">
+                                                        <input type="time" name="finViernes" id="finViernes">
+                                                    </td>
                                                     <td><button type="submit" name="submit" class="btn btn-default ">Registrar</button></td>
-                                                    </form>
+                                                </form>
                                                 </tr>
                                         ';
                                         
                                     }
                                     echo'
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.table-responsive -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.table-responsive -->
                                 </div>
                             
                                     ';

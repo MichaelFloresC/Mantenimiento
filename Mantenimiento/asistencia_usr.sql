@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-07-2018 a las 03:15:26
+-- Tiempo de generación: 07-07-2018 a las 09:39:35
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -38,7 +38,9 @@ CREATE TABLE `permisos` (
 --
 
 INSERT INTO `permisos` (`permiso_id`, `descripcion`) VALUES
-(1, 'Permiso Total');
+(1, 'Permiso admin'),
+(2, 'Permiso Docente'),
+(3, 'Permiso Alumno');
 
 -- --------------------------------------------------------
 
@@ -56,7 +58,9 @@ CREATE TABLE `tipo_usuario` (
 --
 
 INSERT INTO `tipo_usuario` (`tipo_usuario_id`, `descripcion`) VALUES
-(1, 'Administrador');
+(1, 'Administrador'),
+(2, 'Docente'),
+(3, 'Alumno');
 
 -- --------------------------------------------------------
 
@@ -74,7 +78,9 @@ CREATE TABLE `tipo_usuario_permisos` (
 --
 
 INSERT INTO `tipo_usuario_permisos` (`permiso_id`, `tipo_usuario_id`) VALUES
-(1, 1);
+(1, 1),
+(2, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -96,7 +102,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usuario_id`, `tipo_usuario_id`, `docente_id`, `estudiante_id`, `nombre_acceso`, `contrasena_acceso`) VALUES
-(1, 1, 0, 0, 'admin', '$2y$10$UDrEIaLV8QGEme5TD147JOY.errO5lsbkEIp8Md25nAiWRea8kUqC');
+(1, 1, 0, 0, 'admin', '$2y$10$UDrEIaLV8QGEme5TD147JOY.errO5lsbkEIp8Md25nAiWRea8kUqC'),
+(3, 2, 0, 0, 'docente ', '$2y$10$f76db8.XwOD.XlsfwRgr9uqrhaHSp6q70KHdB5rszVZdsb8.NkfQW'),
+(4, 3, 0, 0, 'alumno', '$2y$10$zTgWGXX9aA4Mw9df.E5PduY5InfSAU8fezCNq.F.ALQc23Blv8pKO');
 
 --
 -- Índices para tablas volcadas
@@ -136,19 +144,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `permiso_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `tipo_usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `tipo_usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

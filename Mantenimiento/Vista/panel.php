@@ -74,6 +74,9 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Horarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
+                                    <a href="registroHorario_vista.php">Registrar Horarios</a>
+                                </li>
+                                <li>
                                     <a href="#">Reprogramación</a>
                                 </li>
                                 
@@ -123,6 +126,9 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Asistencia<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
                                 <li>
+                                    <a href="misCursos_vista.php">Mis Cursos del Día</a>
+                                </li>
+                                <li>
                                     <a href="asistencia_vista.php">Lista</a>
                                 </li>
                             </ul>
@@ -140,7 +146,7 @@ if($_SESSION['rol']==1){
 
 <?php
 }
-if($_SESSION['rol']==2){
+if($_SESSION['rol']==3){
 ?>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -151,7 +157,7 @@ if($_SESSION['rol']==2){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="bienvenida.php">Bienestar Social</a>
+                <a class="navbar-brand" href="bienvenida.php">Escuela Profesional de Ingenieria de Sistemas</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -159,7 +165,7 @@ if($_SESSION['rol']==2){
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <?php
-							echo "<i>" . $_SESSION['usuario_cuenta']."</i>";
+							echo "<i>" . $_SESSION['nombre_acceso']."</i>";
 						?>
 						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -209,7 +215,7 @@ if($_SESSION['rol']==2){
 		<!-- /.Barra Alumno -->
 <?php
 }
-if($_SESSION['rol']==3){
+if($_SESSION['rol']==2){
 ?>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -220,7 +226,7 @@ if($_SESSION['rol']==3){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="bienvenida.php">Bienestar Social</a>
+                <a class="navbar-brand" href="bienvenida.php">Escuela Profesional de Ingenieria de Sistemas</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -228,7 +234,7 @@ if($_SESSION['rol']==3){
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <?php
-							echo "<i>" . $_SESSION['usuario_cuenta']."</i>";
+							echo "<i>" . $_SESSION['nombre_acceso']."</i>";
 						?>
 						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
