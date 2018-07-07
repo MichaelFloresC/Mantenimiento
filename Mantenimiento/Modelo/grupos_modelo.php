@@ -19,6 +19,5 @@ class grupos_modelo{
 		}
 		return $grupost;
 	}
-
 }
 ?>
