@@ -21,9 +21,10 @@ class usuarios_modelo{
 			 if (password_verify($password, $row['contrasena_acceso'])) { 
 	  		 	 $_SESSION['loggedin'] = true;
 	   			 $_SESSION['nombre_acceso'] = $username;
+	   			 $_SESSION['rol']= $row['tipo_usuario_id'];
 	   			 $_SESSION['start'] = time();
-	  			 $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
-	  			 header('Location: http://localhost/Mantenimiento/Vista/registroDocente_vista.php');
+	  			 $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+	  			 header('Location: ./Vista/bienvenida.php');
 	  			
 			 }
 
