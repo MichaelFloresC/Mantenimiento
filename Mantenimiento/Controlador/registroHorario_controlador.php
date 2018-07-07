@@ -50,7 +50,7 @@ if(isset($_POST['submit'])) {
 	$datos=$grupoObj->insert_clase($grupoid, $iniLunes, $finLunes, $iniMartes, $finMartes, $iniMiercoles, $finMiercoles, $iniJueves, $finJueves, $iniViernes, $finViernes);
 
 	echo "aqui estoy";
-	//header('Location: ../Vista/registroHorario_vista.php');
+	header('Location: ../Vista/registroHorario_vista.php');
 	exit();
 }
 ?>
