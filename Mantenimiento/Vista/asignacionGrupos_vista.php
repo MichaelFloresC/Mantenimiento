@@ -69,12 +69,13 @@
                                     for($k = 0; $k < sizeof($grupos); $k++){
                                         echo'
                                                 <tr class="odd gradeX">
-                                                <form method="post" id="rowgrupo_form2" action="../controlador/asignarGrupos_controlador.php">
+                                                <form method="post" id="rowgrupo_form2" action="../controlador/asignarGrupos_controlador.php" enctype="multipart/form-data">
                                                     <td style="display:none;"><input type="number" name="grupoid_input" value="'.$grupos[$k][grupo_id].'"></td>
                                                     <td>'.$grupos[$k][codigo].'</td>
                                                     <td>'.$grupos[$k][curso_nombre].'</td>
                                                     <td>'.$grupos[$k][tipo].'</td>
                                                     <td><select class="form-control" name="aula_input">
+                                                        <option value="-1" selected>...</option>
                                         ';
                                         $aulas = $objAulas->get_aulas();
                                         for($l = 0; $l < sizeof($aulas); $l++){
@@ -85,6 +86,7 @@
                                         echo '
                                                     </select></td>
                                                     <td><select class="form-control" name="docente_input">
+                                                        <option value="-1" selected>...</option>
                                         ';
                                         $docentes = $objDocente->get_docentes();
                                         for($l = 0; $l < sizeof($docentes); $l++){
@@ -95,7 +97,7 @@
                                         echo '
                                                     </select></td>
                                                     <td><input type="file" class="form-control-file" name="alumnos_input" id="alumnos_input" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" runat="server"></td>
-                                                    <td><button type="submit" class="btn btn-default ">Registrar</button></td>
+                                                    <td><button type="submit" name="submit" class="btn btn-default ">Registrar</button></td>
                                                     </form>
                                                 </tr>
                                         ';

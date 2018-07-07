@@ -4,7 +4,7 @@
 <html lang="en">
 <?php include("head.php"); ?>
 
-<body>
+<body ng-app="">
     <div id="wrapper">
 
     <?php include("panel.php"); ?>  
@@ -40,7 +40,7 @@
                                     <br>
                                     <label>Seleccionar Periodo</label>
           
-                                    <select class="form-control" name="periodoid_input" form="rowgrupo_form">
+                                    <select class="form-control" name="periodoid_input_s" ng-model="periodo_ng">
                                     <?php
                                         require '../Modelo/periodos_modelo.php';
                                         $objPeriodo = new periodos_modelo();
@@ -94,6 +94,7 @@
                                         echo'
                                                     <tr class="odd gradeX">
                                                     <form method="post" id="rowgrupo_form" action="../controlador/crearGrupos_controlador.php">
+                                                        <input type="hidden" name="periodoid_input" value="{{periodo_ng}}">
                                                         <td style="display:none;"><input type="number" name="cursoid_input" value="'.$cursos[$k][curso_id].'"></td>
                                                         <td>'.$cursos[$k][codigo].'</td>
                                                         <td>'.$cursos[$k][curso_nombre].'</td>
