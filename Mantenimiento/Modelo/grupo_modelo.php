@@ -77,5 +77,49 @@ class grupo_modelo{
 
 	}
 
+	public function insert_clase($grupoid, $iniLunes, $finLunes, $iniMartes, $finMartes, $iniMiercoles, $finMiercoles, $iniJueves, $finJueves, $iniViernes, $finViernes){
+		//Lunes
+		//if($iniLunes == -1 || $finLunes == -1){
+			$result = $this->db->query("DELETE FROM clase WHERE dia = 1 and grupo_id = ".$grupoid);
+		//}else{
+			if($iniLunes != -1 && $finLunes != -1)
+			$result = $this->db->query("INSERT INTO clase (grupo_id, dia, hora_ingreso, hora_salida) VALUES (".$grupoid.", 1, '".$iniLunes."','".$finLunes."')");
+		//}
+
+		//Martes
+		//if($iniMartes == -1 || $finMartes == -1){
+			$result = $this->db->query("DELETE FROM clase WHERE dia = 2 and grupo_id = ".$grupoid);
+		//}else{
+			if($iniMartes != -1 && $finMartes != -1)
+			$result = $this->db->query("INSERT INTO clase (grupo_id, dia, hora_ingreso, hora_salida) VALUES (".$grupoid.", 2, '".$iniMartes."','".$finMartes."')");
+		//}
+
+		//Miercoles
+		//if($iniMiercoles == -1 || $finMiercoles == -1){
+			$result = $this->db->query("DELETE FROM clase WHERE dia = 3 and grupo_id = ".$grupoid);
+		//}else{
+			if($iniMiercoles != -1 && $finMiercoles != -1)
+			$result = $this->db->query("INSERT INTO clase (grupo_id, dia, hora_ingreso, hora_salida) VALUES (".$grupoid.", 3, '".$iniMiercoles."','".$finJueves."')");
+		//}
+
+		//Jueves
+		//if($iniJueves == -1 || $finJueves == -1){
+			$result = $this->db->query("DELETE FROM clase WHERE dia = 4 and grupo_id = ".$grupoid);
+		//}else{
+			if($iniJueves != -1 && $finJueves != -1)
+			$result = $this->db->query("INSERT INTO clase (grupo_id, dia, hora_ingreso, hora_salida) VALUES (".$grupoid.", 4, '".$iniJueves."','".$finJueves."')");
+		//}
+
+		//Viernes
+		//if($iniViernes == -1 || $finViernes == -1){
+			$result = $this->db->query("DELETE FROM clase WHERE dia = 5 and grupo_id = ".$grupoid);
+		//}else{
+			if($iniViernes != -1 && $finViernes != -1)
+			$result = $this->db->query("INSERT INTO clase (grupo_id, dia, hora_ingreso, hora_salida) VALUES (".$grupoid.", 5, '".$iniViernes."','".$finViernes."')");
+		//}
+	}
+
+
+
 }
 ?>

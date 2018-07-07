@@ -73,8 +73,8 @@
                                     for($k = 0; $k < sizeof($grupos); $k++){
                                         echo'
                                                 <tr class="odd gradeX">
-                                                <form method="post" id="rowgrupo_form2" action="../controlador/registroHorario_controlador.php">
-                                                    <td style="display:none;"><input type="number" name="cursoid_input" value="'.$grupos[$k][curso_id].'"></td>
+                                                <form method="post" id="rowgrupo_form3" action="../controlador/registroHorario_controlador.php">
+                                                    <td style="display:none;"><input type="number" name="cursoid_input" value="'.$grupos[$k][grupo_id].'"></td>
                                                     <td>'.$grupos[$k][curso_nombre].'</td>
                                                     <td>'.$grupos[$k][grupo_id].'</td>
                                                     <td>'.$grupos[$k][tipo].'</td>
@@ -86,20 +86,20 @@
                                                         <label> Jueves </label><br>
                                                         <label> Viernes </label><br>
                                                     </td>
-                                                    <td><input type="time" id="inicioLunes">
-                                                        <input type="time" id="inicioMartes">
-                                                        <input type="time" id="inicioMiercoles">
-                                                        <input type="time" id="inicioJueves">
-                                                        <input type="time" id="inicioViernes">
+                                                    <td><input type="time" name="inicioLunes" id="inicioLunes">
+                                                        <input type="time" name ="inicioMartes" id="inicioMartes">
+                                                        <input type="time" name="inicioMiercoles" id="inicioMiercoles">
+                                                        <input type="time" name="inicioJueves" id="inicioJueves">
+                                                        <input type="time" name="inicioViernes" id="inicioViernes">
                                                     </td>
                                                     <td>
-                                                        <input type="time" id="finLunes">
-                                                        <input type="time" id="finMartes">
-                                                        <input type="time" id="finMiercoles">
-                                                        <input type="time" id="finJueves">
-                                                        <input type="time" id="finViernes">
+                                                        <input type="time" name="finLunes" id="finLunes">
+                                                        <input type="time" name="finMartes" id="finMartes">
+                                                        <input type="time" name="finMiercoles" id="finMiercoles">
+                                                        <input type="time" name="finJueves" id="finJueves">
+                                                        <input type="time" name="finViernes" id="finViernes">
                                                     </td>
-                                                    <td><button type="submit" class="btn btn-default ">Registrar</button></td>
+                                                    <td><button type="submit" name="submit" class="btn btn-default ">Registrar</button></td>
                                                 </form>
                                                 </tr>
                                         ';
