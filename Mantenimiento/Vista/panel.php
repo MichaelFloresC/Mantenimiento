@@ -77,7 +77,7 @@ if($_SESSION['rol']==1){
                                     <a href="registroHorario_vista.php">Registrar Horarios</a>
                                 </li>
                                 <li>
-                                    <a href="#">Reprogramación</a>
+                                    <a href="reprogramarHorario_vista.php">Reprogramación</a>
                                 </li>
                                 
                             </ul>
