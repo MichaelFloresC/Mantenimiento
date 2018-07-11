@@ -47,7 +47,6 @@
                                                     <tr>
                                                         <th style="display:none;">Id Curso</th>
                                                         <th>Curso</th>
-                                                        <th>Id Grupo</th>
                                                         <th>Tipo</th>
                                                         <th>Registrar Asistencia</th>
                                                     </tr>
@@ -62,7 +61,6 @@
                                                 <form method="get" id="rowgrupo_form2" action="./asistencia_vista.php">
                                                     <td style="display:none;"><input type="number" name="grupoid_input" value="'.$grupos[$k][grupo_id].'"></td>
                                                     <td>'.$grupos[$k][curso_nombre].'</td>
-                                                    <td>'.$grupos[$k][grupo_id].'</td>
                                                     <td>'.$grupos[$k][tipo].'</td>
                                                     <td><button type="submit" class="btn btn-default ">Tomar Asistencia</button></td>
                                                 </form>

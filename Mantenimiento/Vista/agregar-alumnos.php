@@ -64,11 +64,11 @@
                                     </form>
 								</div>
                                 <div class="tab-pane fade" id="Archivo">
-                                    <form role="form">
+                                    <form role="form" id="frm-alumno-archivo" enctype="multipart/form-data" action="?c=alumno&a=GuardarArchivo" method="post">
                                         
                                         <div class="form-group">
                                             <label>Subir Archivo</label>
-                                            <input type="file">
+                                            <input id="archivo" accept=".csv" name="archivo" type="file" /> 
                                         </div>
                                   
                                         <button type="submit" class="btn btn-default">Registrar</button>

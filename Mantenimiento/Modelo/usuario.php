@@ -6,11 +6,11 @@ class usuario
 
 	//Atributos del objeto usuario
     public $usuario_id;
-    public $usuario_cuenta;
-    public $usuario_password;
-    public $usuario_rol_id;
-	public $usuario_persona_id;
-	public $usuario_estado;
+    public $tipo_usuario_id;
+    public $docente_id;
+    public $estudiante_id;
+	public $nombre_acceso;
+	public $contrasena_acceso;
 
 
 	//Método de conexión a SGBD.
@@ -34,7 +34,7 @@ class usuario
 		{
 			$result = array();
 			//Sentencia SQL para selección de datos.
-			$stm = $this->pdo->prepare("SELECT * FROM usuario WHERE usuario_estado = 0");
+			$stm = $this->pdo->prepare("SELECT * FROM usuario WHERE contrasena_acceso = 0");
 			//Ejecución de la sentencia SQL.
 			$stm->execute();
 			//fetchAll — Devuelve un array que contiene todas las filas del conjunto
@@ -74,7 +74,7 @@ class usuario
 			//Sentencia SQL para eliminar una tupla utilizando
 			//la clausula Where.
 			$stm = $this->pdo
-			            ->prepare("UPDATE usuario SET usuario_estado = 1 WHERE usuario_id = ?");
+			            ->prepare("UPDATE usuario SET contrasena_acceso = 1 WHERE usuario_id = ?");
 
 			$stm->execute(array($usuario_id));
 		} catch (Exception $e)
@@ -91,22 +91,22 @@ class usuario
 		{
 			//Sentencia SQL para actualizar los datos.
 			$sql = "UPDATE usuario SET
-						usuario_cuenta          = ?,
-						usuario_password        = ?,
-						usuario_rol_id        = ?,
-						usuario_persona_id			 = ?,
-						usuario_estado				 = ?
+						tipo_usuario_id          = ?,
+						docente_id        = ?,
+						estudiante_id        = ?,
+						nombre_acceso			 = ?,
+						contrasena_acceso				 = ?
 						
 				    WHERE usuario_id = ?";
 			//Ejecución de la sentencia a partir de un arreglo.
 			$this->pdo->prepare($sql)
 			     ->execute(
 				    array(
-                        $data->usuario_cuenta,
-                        $data->usuario_password,
-                        $data->usuario_rol_id,
-                        $data->usuario_persona_id,
-						$data->usuario_estado,
+                        $data->tipo_usuario_id,
+                        $data->docente_id,
+                        $data->estudiante_id,
+                        $data->nombre_acceso,
+						$data->contrasena_acceso,
 						$data->usuario_id
 
 					)
@@ -123,17 +123,17 @@ class usuario
 		try
 		{
 			//Sentencia SQL.
-			$sql = "INSERT INTO usuario (usuario_cuenta,usuario_password,usuario_rol_id,usuario_persona_id,usuario_estado)
+			$sql = "INSERT INTO usuario (tipo_usuario_id,docente_id,estudiante_id,nombre_acceso,contrasena_acceso)
 		        VALUES (?, ?, ?, ?, ?)";
 
 			$this->pdo->prepare($sql)
 		     ->execute(
 				array(
-						$data->usuario_cuenta,
-                        $data->usuario_password,
-                        $data->usuario_rol_id,
-                        $data->usuario_persona_id,
-						$data->usuario_estado
+						$data->tipo_usuario_id,
+                        $data->docente_id,
+                        $data->estudiante_id,
+                        $data->nombre_acceso,
+						$data->contrasena_acceso
                 )
 			);
 		} catch (Exception $e)

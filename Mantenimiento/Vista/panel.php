@@ -87,7 +87,7 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-files-o fa-fw"></i>Reportes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Alumnos</a>
+                                    <a href="Reportes.php">Por Curso</a>
                                 </li>
                                 <li>
                                     <a href="#">Docentes</a>

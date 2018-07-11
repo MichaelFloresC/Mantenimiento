@@ -13,6 +13,7 @@ class profesor
 		try
 		{
 			$this->pdo = Conectar::conexion();
+			$this->pdo2 = Conectar::conexion_user();
 		}
 		catch(Exception $e)
 		{
@@ -114,17 +115,17 @@ class profesor
 		try
 		{
 			//Sentencia SQL.
-			$sql = "INSERT INTO usuario (usuario_cuenta,usuario_password,usuario_rol_id,usuario_persona_id,usuario_estado)
+			$sql = "INSERT INTO usuarios (tipo_usuario_id,docente_id,estudiante_id,nombre_acceso,contrasena_acceso)
 		        VALUES (?, ?, ?, ?, ?)";
 
-			$this->pdo->prepare($sql)
+			$this->pdo2->prepare($sql)
 		     ->execute(
 				array(
-						$data->usuario_cuenta,
-                        $data->usuario_password,
-                        $data->usuario_rol_id,
-                        $data->usuario_persona_id,
-						$data->usuario_estado
+						$data->tipo_usuario_id,
+                        $data->docente_id,
+                        $data->estudiante_id,
+                        $data->nombre_acceso,
+						$data->contrasena_acceso
                 )
 			);
 		} catch (Exception $e)
