@@ -50,9 +50,16 @@ class justificacionalumnoController{
     //Método que registrar al modelo un nuevo proveedor.
     public function EnviarJustificacion(){
         $pvd = new justificacionalumno();
-        $pvd->estudiante_id = $_REQUEST['estudiante_id'];
+        $pvd->estudiante_id = $_REQUEST['cbx_estudiante'];
         $pvd->justificado = $_REQUEST['justificado'];
         $this->model->JustificarFormulario($pvd);
+        header("Location: ../Vista/Mensaje.php");
+    }
+	public function EnviarJustificacion(){
+        $pvd = new justificacionalumno();
+        $pvd->estudiante_id = $_REQUEST['cbx_estudiante'];
+        $pvd->documento_justificacion = $_REQUEST['documento_justificacion'];
+        $this->model->JustificarArchivo($pvd);
         header("Location: ../Vista/Mensaje.php");
     }
     public function GuardarArchivo(){

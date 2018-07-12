@@ -101,6 +101,27 @@ class justificacionalumno
 			die($e->getMessage());
 		}
 	}
+	
+	public function JustificarArchivo($data)
+	{
+		try
+		{
+			//Sentencia SQL para actualizar los datos.
+			$sql = "UPDATE asistencia SET
+						documento_justificacion        			= ?	
+				    WHERE estudiante_id = ?";
+			$this->pdo->prepare($sql)
+			     ->execute(
+				    array(
+						$data->documento_justificacion,
+                        $data->estudiante_id,
+					)
+				);
+		} catch (Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
 
 	//Método que registra un nuevo alumno a la tabla.
 	public function Registrar(alumno $data)

@@ -34,11 +34,11 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="Formulario">
 									<form role="form" id="frm-alumno" action="?c=justificacionalumno&a=EnviarJustificacion" method="post" >
-                                        <input type="hidden" name="justificado" value="1" />
+                                        <input type="hidden" name="justificado" id="justificado" value="1" />
 										<label >Seleccionar alumno</label>
-										<select class="form-control" name="estudiante_id">									
+										<select class="form-control" name="cbx_estudiante" id="cbx_estudiante">									
 										<?php foreach($this->model->Listar() as $r): ?>
-											<option name=<?php echo $r->estudiante_id; ?>><?php echo $r->estudiante_nombre; ?></option>                                      
+											<option value=<?php echo $r->estudiante_id; ?>><?php echo $r->estudiante_nombre; ?></option>                                      
 										<?php endforeach; ?>    
 										</select>
 										<br>
@@ -49,13 +49,13 @@
                                     </form>
 								</div>
                                 <div class="tab-pane fade" id="Archivo">
-                                    <form role="form" id="frm-alumno-archivo"  action="?c=justificacionalumno&a=EnviarJustificacion" enctype="multipart/form-data" method="post">
+                                    <form role="form" id="frm-alumno-archivo"  action="?c=justificacionalumno&a=EnviarJustificacionA" enctype="multipart/form-data" method="post">
                                         <input type="hidden" name="justificado" value="1" />
-                                        <input type="hidden" name="documento_justificacion" value="1" />
+                                        <input type="hidden" name="documento_justificacion" id="documento_justificacion"  value="1" />
 										<label >Seleccionar alumno</label>
-										<select class="form-control" name="estudiante_id">									
+										<select class="form-control" name="cbx_estudiante" id="cbx_estudiante">>									
 										<?php foreach($this->model->Listar() as $r): ?>
-											<option name=<?php echo $r->estudiante_id; ?>><?php echo $r->estudiante_nombre; ?></option>                                      
+											<option value=<?php echo $r->estudiante_id; ?>><?php echo $r->estudiante_nombre; ?></option>                                      
 										<?php endforeach; ?>    
 										</select>
 										<br>
