@@ -23,8 +23,6 @@ if($_SESSION['rol']==1){
 						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="cambio-contrasena.php"><i class="fa fa-gear fa-fw"></i> Configuración</a>
-                        </li>
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
                         </li>
@@ -89,13 +87,6 @@ if($_SESSION['rol']==1){
                                 <li>
                                     <a href="Reportes.php">Por Curso</a>
                                 </li>
-                                <li>
-                                    <a href="#">Docentes</a>
-                                </li>
-                                <li>
-                                    <a href="#">Cursos</a>
-                                </li>
-
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>                      
@@ -103,13 +94,7 @@ if($_SESSION['rol']==1){
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Malla Curricular<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="listaMalla_vista.php">Malla</a>
-                                </li>
-                                <li>
                                     <a href="cargarMalla_vista.php">Cargar Malla</a>
-                                </li>
-                                <li>
-                                    <a href="listaCursos_vista.php">Lista de cursos</a>
                                 </li>
                                 <li>
                                     <a href="crearGruposCursos_vista.php">Crear Grupos de cursos</a>
@@ -122,19 +107,7 @@ if($_SESSION['rol']==1){
                             <!-- /.nav-second-level -->
                         </li>
 						<!-- /Malla Curricular -->		
-						<li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Asistencia<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-                                <li>
-                                    <a href="misCursos_vista.php">Mis Cursos del Día</a>
-                                </li>
-                                <li>
-                                    <a href="asistencia_vista.php">Lista</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-						<!-- /Usuarios -->
+
 						
                     </ul>
                 </div>
@@ -187,28 +160,17 @@ if($_SESSION['rol']==3){
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-						<li>
-                            <a href="perfil-alumno.php"><i class="fa fa-wrench fa-fw"></i> Perfil</a>
-                        </li>
-											
 						
-						<!-- /Relaciones públicas y dirección -->                       
 						<li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Malla Curricular<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="lista-malla.php">Malla</a>
-                                </li>
-
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="alumnoVista.php"><i class="fa fa-wrench fa-fw"></i> Alumnos</a>
                         </li>
-						<!-- /Malla Curricular -->		
+						<!-- /Usuarios -->						
 					
 						
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
+				
             </div>
             <!-- /.Barra Desplegable Izquierda -->
         </nav>
@@ -239,8 +201,6 @@ if($_SESSION['rol']==2){
 						<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="cambio-contrasena.php"><i class="fa fa-gear fa-fw"></i> Configuración</a>
-                        </li>
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
                         </li>
@@ -255,25 +215,27 @@ if($_SESSION['rol']==2){
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
 						<!-- /Alumnos -->
-						<li>
-                            <a href="alumnoVista.php"><i class="fa fa-wrench fa-fw"></i> Alumnos</a>
-                        </li>
-						
-						<!-- /Relaciones públicas y dirección -->                       
-						<li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Malla Curricular<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+							<li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Asistencia<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
                                 <li>
-                                    <a href="lista-malla.php">Lista</a>
+                                    <a href="misCursos_vista.php">Mis Cursos del Día</a>
                                 </li>
-								
-
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
-						<!-- /Malla Curricular -->		
-					
-						
+                        </li>		
+						<li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Alumnos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="alumnoVista.php">Lista de Alumnos</a>
+                                </li>
+                                <li>
+                                    <a href="Mantenimiento.php?c=justificacionalumno&a=Justificar">Justificación</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>						
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

@@ -41,7 +41,6 @@
 											<?php
 												}
 											?>
-											<th>Ver</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,7 +58,6 @@
 											<?php
 												}
 											?>
-											<td class="center"><a href="?c=alumno&a=Perfil&persona_id=<?php echo $r->persona_id; ?>">Ver</a></td>
                                         </tr>                                        
                                     <?php endforeach; ?>    
                                     </tbody>
