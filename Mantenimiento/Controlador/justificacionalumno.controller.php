@@ -55,7 +55,7 @@ class justificacionalumnoController{
         $this->model->JustificarFormulario($pvd);
         header("Location: ../Vista/Mensaje.php");
     }
-	public function EnviarJustificacion(){
+	public function EnviarJustificacionA(){
         $pvd = new justificacionalumno();
         $pvd->estudiante_id = $_REQUEST['cbx_estudiante'];
         $pvd->documento_justificacion = $_REQUEST['documento_justificacion'];
