@@ -235,6 +235,15 @@ if($_SESSION['rol']==2){
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
+                        </li>	
+  <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Reportes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="Reportes.php">Por Curso</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>						
                     </ul>
                 </div>
