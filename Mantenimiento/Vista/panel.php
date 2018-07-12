@@ -64,7 +64,7 @@ if($_SESSION['rol']==1){
                                     <a href="alumnoVista.php">Lista de Alumnos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Justificación</a>
+                                    <a href="Mantenimiento.php?c=justificacionalumno&a=Justificar">Justificación</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
